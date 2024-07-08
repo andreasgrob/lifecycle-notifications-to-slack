@@ -1,0 +1,110 @@
+{
+  "blocks": [
+    {
+      "type": "header",
+      "text": {
+        "type": "plain_text",
+        "text": ":information_source: Controller State Notification"
+      }
+    },
+    {
+      "type": "section",
+      "fields": [
+        {
+          "type": "mrkdwn",
+          "text": "*Status:*\n{{ status }}"
+        },
+        {
+          "type": "mrkdwn",
+          "text": "*Message ID:*\n{{ id }}"
+        },
+        {
+          "type": "mrkdwn",
+          "text": "*Timestamp:*\n{{ timestamp }}"
+        }
+      ]
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*:gear: Controller Details*"
+      }
+    },
+    {
+      "type": "section",
+      "fields": [
+        {
+          "type": "mrkdwn",
+          "text": "*Controller Name:*\n{{ controller.name }}"
+        },
+        {
+          "type": "mrkdwn",
+          "text": "*Display Name:*\n{{ controller.displayName }}"
+        },
+        {
+          "type": "mrkdwn",
+          "text": "*Domain:*\n{{ controller.domain }}"
+        },
+        {
+          "type": "mrkdwn",
+          "text": "*Image:*\n{{ controller.image }}"
+        },
+        {
+          "type": "mrkdwn",
+          "text": "*URL:*\n{{ "<{}|{}>".format(controller.url, controller.url) if controller.url else "N/A" }}"
+        }
+      ]
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*:wrench: Operations Center Details*"
+      }
+    },
+    {
+      "type": "section",
+      "fields": [
+        {
+          "type": "mrkdwn",
+          "text": "*Operations Center URL:*\n<{{ operationsCenter.url }}|{{ operationsCenter.url }}>"
+        },
+        {
+          "type": "mrkdwn",
+          "text": "*OC CasC Bundle Version:*\n{{ operationsCenter.cascBundleVersion }}"
+        }
+      ]
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "fields": [
+        {
+          "type": "mrkdwn",
+          "text": "*Custom Data Foo:*\n{{ customData.foo }}"
+        }
+      ]
+    }
+    {% if error %}
+    ,{
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*:warning: Error:*\n{{ error }}"
+      }
+    }
+    {% endif %}
+  ]
+}
